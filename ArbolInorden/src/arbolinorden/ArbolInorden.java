@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package arbolinorden;
 
 /**
@@ -31,8 +27,11 @@ public class ArbolInorden {
             
                 }while(nm != 0);
                     System.out.println("el recorrido en INORDEN es : ");
-        
-        //arb.RecorridoEntre();
+                    arb.recorreEnOrden();
+                     System.out.println("el recorrido en PREORDEN es : ");
+                    arb.recorreEnPreOrden();
+                     System.out.println("el recorrido en POSORDEN es : ");
+                    arb.recorreEnPosOrden();
     }
     
     class Nodo{
@@ -77,5 +76,67 @@ public class ArbolInorden {
                             }
                     }
                 }
+     }     
+    
+    // metodo para encontrar duplicados 
+    
+    public boolean existe( int NuevoNodo){
+     Nodo reco =raiz;
+     while (reco != null){ 
+            if (NuevoNodo == reco.info){
+                    return true;
+            } else {
+                  if (NuevoNodo  > reco.info)
+                      reco = reco.der;
+                  else
+                      reco = reco.izq;
+                 }
+        } 
+     
+        return false;
+    
+         }
+         
+    private void recorreEnOrden(Nodo reco){
+                  if(reco !=null){
+                  recorreEnOrden(reco.izq);
+                      System.out.println(reco.info + "  ");
+                  recorreEnOrden(reco.der);
+                  }
     }
-}
+    
+    public void recorreEnOrden(){
+    
+                  recorreEnOrden(raiz);
+                  System.out.println();
+    }
+
+     private void recorreEnPreOrden(Nodo reco){
+                  if(reco !=null){ 
+                   System.out.println(reco.info + "  ");
+                  recorreEnPreOrden(reco.izq);
+                  recorreEnPreOrden(reco.der);
+                  }
+    }
+    
+    public void recorreEnPreOrden(){
+    
+                  recorreEnPreOrden(raiz);
+                  System.out.println();
+    }
+    
+     private void recorreEnPosOrden(Nodo reco){
+                  if(reco !=null){ 
+                   recorreEnPosOrden(reco.izq);
+                  recorreEnPosOrden(reco.der);
+                  System.out.println(reco.info + "  ");
+                  }
+    }
+    
+    public void recorreEnPosOrden(){
+    
+                  recorreEnPosOrden(raiz);
+                  System.out.println();
+    }
+}  
+// 24 45 22 32 16 65 12 18 0
